@@ -28,4 +28,4 @@ As a player, I would like to have choices to make in the story of the game
 Osama-
 
 As as player, i would like to have multiple options at each step(3 or more) where each option has different effect on score.
-As in one option has higher score than the other one or it can lead to even some deduction in score. 
+As in one option has higher score than the other one or it can lead to even some deduction in score and inventory. 
