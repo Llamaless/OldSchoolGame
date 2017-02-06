@@ -15,6 +15,13 @@ I would like for the user to progress through the story line by choosing differe
 I would like the user to be able to choose their class at the beginning of the story.
 I would like for there to be many different scenarios based on the options the user chooses.
 Lastly there should be a small amount of graphics to be implemented in the text based game.
+
+
+Usmaan - 
+I would like the player to have items to carry and equip then store in the inventory 
+I would like the player to have mulitple scenarios in each zone they progress through
+I would like the player to not have the same outcomes in each zone
+I would like the players health to be tracked
        
         
 Gabriel - 
