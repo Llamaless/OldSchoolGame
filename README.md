@@ -36,3 +36,13 @@ Osama-
 
 As as player, i would like to have multiple options at each step(3 or more) where each option has different effect on score.
 As in one option has higher score than the other one or it can lead to even some deduction in score and inventory. 
+
+
+Petar-
+
+as a player I would like to have the option to choose a name
+as a player I would like to do quests and gain rewards
+as a player I would like to colect items and equip them
+as a player I would like to level up
+as a player I would like to kill monsters and gain levels to continue questing
+as a player I would like to use potions
