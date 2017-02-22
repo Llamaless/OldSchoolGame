@@ -1,0 +1,48 @@
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+	cout << "On your adventure you come across a heavily armed city..." << endl;
+	cout << "You have two options warrior" << endl;
+	system("cls");
+	int choiceOne_Path;
+	cout << "# What would you like to do?" << endl;
+	cout << "\t >> Enter '1' to enter the city through the main gates " << endl;
+	cout << "\t >> Enter '2' to enter the city by climbing its walls" << endl;
+retry:
+	cout << "\nEnter your choice: ";
+	cin >> choiceOne_Path;
+	if (choiceOne_Path == 1)
+	{
+		cout << "\n!!!----------------------Chapter One: The City----------------------!!!" << endl;
+		cout << "\nThe front gates are heavily barricaded and protected by 10 armed guards" << endl;
+		cout << "You are attacked by the guards" << endl;
+		cout << "# You try to fight but you are overpowered and are killed..." << endl;
+	}
+	else if (choiceOne_Path == 2)
+	{
+		cout << "\n!!!----------------------Chapter One: The City----------------------!!!" << endl;
+		cout << "\nYou climb the walls of the city and make it over to the other side" << endl;
+		cout << "There are heavily armed guards everywhere but they haven't noticed you." << endl;
+		cout << "An infantry patrol approaches you" << endl;
+		cout << "# You run into a nearby house and hide" << endl;
+		cout << "# a townsman asks who you are" << endl;
+		char name[50];
+		cout << "You reply" << endl;
+		cin.getline(name, 50);
+		cout << "You better move fast, " << name << "The guards are searching for you" << endl;
+
+	}
+	else
+	{
+		cout << "Please enter 1 or 2" << endl;
+		goto retry;
+	}
+	cout << "\n Press any key to continue" << endl;
+	_getch();
+	return 0;
+	
+}
