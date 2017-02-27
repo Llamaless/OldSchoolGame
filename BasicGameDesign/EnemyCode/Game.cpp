@@ -19,7 +19,7 @@ Game::~Game() //init destructor
 
 void Game::MainMenu() //init function
 {
-	cout << " Main Menu\n" << endl;
+	cout << "A Tale of a Hero" << endl << endl;
 	cout << " 1:	Play " << endl;
 	cout << " 2:	Instructions" << endl;
 	cout << " 3:	Character Information " << endl;
