@@ -33,7 +33,7 @@ public :
 
 	//Functions
 
-	void cinit(int enemyLevel, std::string enemyNAME, std::string enemyAREA);
+	void cinit(int enemyLevel, std::string enemyNAME, std::string enemyAREA, int enemyDMG, int enemyDIF, int XPR, double enemyHP);
 
 
 
