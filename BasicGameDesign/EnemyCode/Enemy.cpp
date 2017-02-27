@@ -25,7 +25,7 @@ Enemy::~Enemy() //call destructor
 }
 
 // Initializes the character
-void Enemy::cinit(int enemyLevel, std::string enemyNAME, std::string enemyAREA)
+void Enemy::cinit(int enemyLevel, std::string enemyNAME, std::string enemyAREA, int enemyDMG, int enemyDIF, int XPR, double enemyHP)
 {
 	
 	this->enemyNAME = "";
