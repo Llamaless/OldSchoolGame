@@ -19,7 +19,7 @@ int main() {
 
 	Enemy enemy; //creates object
 
-	enemy.cinit(1, "1234", "forest"); //define object using a function
+	enemy.cinit(1, "name","forest", 5, 1, 20, 10) ; //define object using a function
 
 
 	return 0;
