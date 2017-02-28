@@ -1,6 +1,6 @@
 #include "Game.h"
 #include "Enemy.h"
-#include "Functions.h"
+#include "FunctionsD.h"
 
 Game::Game()
 {
