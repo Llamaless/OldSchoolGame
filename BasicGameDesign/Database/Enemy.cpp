@@ -51,9 +51,10 @@ int Enemy::db_build()
 		"NAME            TEXT     NOT NULL,"
 		"DAMAGE          INT     NOT NULL,"
 		"AREA            TEXT     NOT NULL,"
+		"AREAID          INT     NOT NULL,"
 		"LEVEL           INT      NOT NULL);"
 		"DIFFICULTY      INT     NOT NULL,"
-		"XPR			 INT      NOT NULL);"
+		"XPGiven	 INT      NOT NULL);"
 		"HEALTH          INT      NOT NULL);";
 
 	/* Execute SQL statement */
