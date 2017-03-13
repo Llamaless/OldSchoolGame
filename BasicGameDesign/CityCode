@@ -1,0 +1,160 @@
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+	cout << "On your adventure you come across a heavily armed city..." << endl;
+	cout << "You have two options warrior" << endl;
+	system("cls");
+	int choiceOne_Path;
+	cout << "# What would you like to do?" << endl;
+	cout << "\t >> Enter '1' to enter the city through the main gates " << endl;
+	cout << "\t >> Enter '2' to enter the city by climbing its walls" << endl;
+	cout << "\nEnter your choice: ";
+	cin >> choiceOne_Path;
+	if (choiceOne_Path == 1)
+	{
+		cout << "\n!!!----------------------Chapter One: The City----------------------!!!" << endl;
+		cout << "\nThe front gates are heavily barricaded and protected by 10 armed guards" << endl;
+		cout << "You are attacked by the guards" << endl;
+		cout << "# You try to fight but you are overpowered and are killed..." << endl;
+		system("pause");
+		return 0;
+		
+	}
+	else if (choiceOne_Path == 2)
+	{
+		cout << "\n!!!----------------------Chapter One: The City----------------------!!!" << endl;
+		cout << "\nYou climb the walls of the city and make it over to the other side" << endl;
+		cout << "There are heavily armed guards everywhere but they haven't noticed you." << endl;
+		cout << "An infantry patrol approaches you" << endl;
+		cout << "# You run into a nearby house and hide" << endl;
+		cout << "# a townsman asks who you are" << endl;
+		char name[50];
+		cout << "What is your name?" << endl;
+		cin.getline(name, 50);
+		cin >> name; 
+		cout << "You better move fast," << name << " The guards are searching for you" << endl;
+
+	} 
+
+	int choiceTwo_Path;
+	cout << "As you look around the house there are three main exits, The front door, The window or the cellar." << endl;
+	cout << "Where do you choose to go?" << endl;
+	cout << "\t >> Enter '1' to go out the front door " << endl;
+	cout << "\t >> Enter '2' to go out the window" << endl;
+	cout << "\t >> Enter '3' to go into the cellar" << endl;
+	cout << "\nEnter your choice: ";
+	cin >> choiceTwo_Path;
+	
+	if (choiceTwo_Path == 1)
+	{
+		cout << "You leave through the front door only to be apprehended by the guards" << endl;
+		cout << "You are taken to a prison cell where you await your execution day..." << endl;
+		system("pause");
+		return 0;
+	}
+	
+    else if (choiceTwo_Path == 2)
+	{
+		cout << "You narrowly escape the house as you leave through the window just as the guards burst through the front door..." << endl;
+		cout << "Suddenly a guard shouts 'THERE HE IS' and you are chased through the city..." << endl;
+		cout << "Eventually you are caught and imprisoned until your execution..." << endl;
+		system("pause");
+		return 0;
+	}
+
+	else if (choiceTwo_Path == 3)
+	{
+		cout << "You run down the cellar..." << endl;
+		cout << "There is a small opening that smells putrid..." << endl;
+		cout << "It is the city's sewer system" << endl;
+	}
+
+
+	int choiceThree_Path;
+	cout << "You narrowly escaped the guards and are now under the city" << endl;
+	cout << "As you make your way through the sewer you come across three different paths" << endl;
+	cout << "Do you take the right, left or middle path? " << endl;
+	cout << "Please enter 1 for the right, 2 for the left or 3 for the middle." << endl;
+	cin >> choiceThree_Path;
+
+	if (choiceThree_Path == 1)
+	{
+		cout << "You have taken the right path " << endl;
+		cout << "As you reach the end of the path it is a dead end..." << endl;
+		cout << "You turn back" << endl;
+		cout << "Please enter 1 for the middle or 2 for the left" << endl;
+		cin >> choiceThree_Path;
+	}
+
+	if (choiceThree_Path == 2)
+	{
+		cout << "You've taken the left path" << endl;
+		cout << "Where you encounter another dead end..." << endl;
+		cout << "You turn back and take the middle path" << endl;
+		cout << "\n\n\n\n You go through the middle path where you find a ladder at the end of the tunnel "<< endl;
+	}
+
+	if (choiceThree_Path == 3)
+	{
+		cout << "You go through the middle path where you find a ladder at the end of the tunnel" << endl;
+		cout << "Do you go up the ladder (1) or do you return back to the sewer (2)" << endl;
+		int Ladder_Path;
+		cin >> Ladder_Path;
+		if (Ladder_Path == 1)
+		{
+			cout << "You go up the ladder and discover that the ladder led you right up to the main city town square" << endl;
+		}
+		else if (Ladder_Path == 2)
+		{
+			int Crocolisk_Battle;
+			cout << "You return down the sewer where you encounter a large crocolisk" << endl;
+			cout << "Do you wish to fight the crocolisk or flee?" << endl;
+			cout << "Enter 1 to fight or 2 to flee" << endl;
+			cin >> Crocolisk_Battle;
+
+			if (Crocolisk_Battle == 1)
+			{
+				cout << "You have chosen to fight the crocolisk..." << endl;
+				cout << "The crocolisk charges at you and rips a chunk off your arm..." << endl;
+				cout << "As a bite is taken, it injects it's poison into you and you slowly begin to die..." << endl;
+				system("pause");
+				return 0;
+			}
+
+			if (Crocolisk_Battle == 2)
+			{
+				cout << "By fleeing you run up the ladder and discover you are in the main square of the city..." << endl;
+			}
+		}
+
+		int choiceFour_Path;
+		cout << "In the square there are many vendors..." << endl;
+		cout << "Which vendor would you like to go to?..." << endl;
+		cout << "The Weaponsmith (1)\n  The Alchemist (2)\n  The Enchanter (3) " << endl;
+		cin >> choiceFour_Path;
+
+		if (choiceFour_Path == 1)
+		{
+			cout << "Hello there traveller... \n What can I help you with?" << endl;
+			cout << "Enter 1 to buy weapons\n Enter 2 to sell weapons" << endl;
+			int choice_Weaponsmith;
+				cin >> choice_Weaponsmith;
+				if (choice_Weaponsmith == 10)
+					cout << " I only have a few items on sale at the moment traveller\n Do you wish to buy:\n A sword (1) \n An Axe (2) \n Nothing (3)" << endl;
+		}
+
+		system("pause");
+		return 0;
+
+	}
+
+
+	cout << "\n Press any key to continue" << endl;
+	_getch();
+	return 0;
+	
+}
