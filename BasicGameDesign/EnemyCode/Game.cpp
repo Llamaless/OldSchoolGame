@@ -1,15 +1,20 @@
 #include "Game.h"
-#include "Enemy.h"
-#include "FunctionsD.h"
+#include <iostream>
+#include <conio.h>
+#include <sqlite3.h>
 
-Game::Game()
+
+
+using namespace std;
+
+Game::Game() //init constructor
 {
 	choice = 0;
 	play = true;
 
 }
 
-Game::~Game()
+Game::~Game() //init destructor
 {
 
 }
@@ -19,9 +24,10 @@ Game::~Game()
 
 
 
-void Game::MainMenu()
+void Game::MainMenu() //init function
 {
-	cout << " Main Menu\n" << endl;
+	cout << "A Tale of a Hero" << endl << endl;
+	
 	cout << " 1:	Play " << endl;
 	cout << " 2:	Instructions" << endl;
 	cout << " 3:	Character Information " << endl;
@@ -36,6 +42,80 @@ void Game::MainMenu()
 
 	switch (choice)
 	{
+	case 5:
+		system("cls");
+		cout << "Are you sure you want to quit de game?" << endl;
+		cout << "If yes, press y, if not, press n." << endl;
+		cout << "Choice: ";
+		cin >> quit;
+		if (quit == "y")
+		{
+			play = false;
+			Sleep(1000);
+			break;
+			system("cls");
+		}
+		else if (quit == "n")
+		{
+			system("cls");
+			cout << "Going back to main menu.";
+			Sleep(1000);
+			system("cls");
+			break;
+		}
+
+
+
+	case 4:
+		system("cls");
+		cout << "The game was created by : \n" << endl;
+		cout << " Kobe Davis " << endl;
+		cout << " Gabriel Dumitru " << endl;
+		cout << " Petar Patev " << endl;
+		cout << " Ajaz Usmaan" << endl;
+		cout << " Asim Osama" << endl;
+		cout << " Bashir Deen" << endl << endl;
+		
+		
+		cout << "Press enter to go back to main menu..";
+		getline(cin, back);
+		cin.ignore();
+		system("cls");
+
+		break;
+
+	case 3:
+		system("cls");
+		cout << "=== Character Stats === \n" << endl;
+		cout << "Name :" << "To be added\n" << endl;
+		cout << "Health : .... \n" << endl;
+		cout << "Stamina : .... \n" << endl;
+		cout << "Strenght : .... \n" << endl;
+		cout << "Experience : .... \n" << endl;
+
+		cout << "Press enter to go back to main menu..";
+		getline(cin, back);
+		cin.ignore();
+		system("cls");
+
+		break;
+
+	case 2:
+		system("cls");
+		cout << " <=======|==o" << " o==|=======>" <<"\n"<< endl;
+		cout << " The purpose of this game is to help your character to overcome the challenges" << endl;
+		cout << "he faces in the zones that he travels to, by defeating the enemies he will encounter.\n" << endl;
+		cout << " During the game, the user will have to choose his options very carefully, as it will" << endl;
+		cout << "affect the fate of the hero.\n" << endl;
+		cout<<" The instructions are simple : Play and survive the challenges in order to finish the story.\n"<<endl;
+		cout << " <=======|==o" << " o==|=======>" << endl << endl;
+		
+		cout << "Press enter to go back to main menu..";
+		getline(cin, back);
+		cin.ignore();
+		system("cls");
+
+		break;
 	case 1:
 		system("cls");
 		cout << "On your adventure you come across a heavily armed city..." << endl;
@@ -77,8 +157,7 @@ void Game::MainMenu()
 			cout << "You better move fast, " << name << "The guards are searching for you" << endl << endl;
 			cout << " You need to fulfill your duty before you return to the city hero, you are not welcome here until then" << endl << endl;
 			
-			cout << "\t >> Enter '1' to enter the city through the main gates " << endl;
-			cout << "\t >> Enter '2' to enter the city by climbing its walls" << endl;
+			
 			cout << "\t >> Enter '3' to go to a cave you have found on your way to the city and left it behind" << endl;
 
 			goto retry;
@@ -229,14 +308,19 @@ void Game::MainMenu()
 
 					if (choiceRoom == 1)
 					{
-						cout << "You have chosen to search for a way out" << endl;
+						cout << "You have chosen to search for a way out, and on your way you find a mysterious object on the ground." << endl;
+						cout << "As you touch it, you feel the Monk's presence in your head, maddening your mind and making you his servant." << endl;
+
 						cout << "" << endl;
+						break;
+
 					}
 
 					else if (choiceRoom == 2)
 					{
-						cout << "You have chosen to break the door down" << endl;
+						cout << "You have chosen to break the door down, but a poisonous gas comes from the room, causing you to asphyxiate and die" << endl;
 						cout << "" << endl;
+						break;
 					}
 
 
@@ -249,25 +333,24 @@ void Game::MainMenu()
 					cout << "as you continue to walk ahead on this cold path you start to feel the ground shake" << endl;
 					cout << "THE FLOOR COLLAPSES BENEATH YOU" << endl;
 					cout << "YOU HAVE DIED" << endl;
+					break;
 				}
 
 				else if (choiceTwo_Path == 3)
 				{
 					cout << "You continue straight through this dungeon searching for whatever items you can find along the floor within the darkness " << endl;
 					cout << "You come across a torch and decide to light it " << endl;
-					cout << "The halls light up and reveal three doors infront of you" << endl;
-					cout << "Which one will you choose? " << endl;
+					cout << "The halls light up and reveal a door infront of you" << endl;
+					cout << "Will you proceed? " << endl;
 
 
-					int choiceDoors;
+					int choiceDoor;
 
 					cout << "\t >> Enter '1' to go through the wooden door " << endl;
-					cout << "\t >> Enter '2' to go through the steel door" << endl;
-					cout << "\t >> Enter '3' to go through the caged door" << endl;
 					cout << "\nEnter your choice: ";
-					cin >> choiceDoors;
+					cin >> choiceDoor;
 
-					if (choiceDoors == 1)
+					if (choiceDoor == 1)
 					{
 						cout << "You have chosen the wooden door" << endl;
 						cout << "You find yourself in a small room, but you feel something is not right..." << endl;
@@ -275,7 +358,6 @@ void Game::MainMenu()
 						cout << " Knowing that you have to fulfill your duty, you charge at him, wanting to end his tornment." << endl;
 						Enemy monk;
 						monk.cinit(3, "Lonely Monk", "Hideout", 30, 3, 200, 250);
-						//fighting
 						cout << "Now that you completed your quest, you return victorious to the city...." << endl;
 						cout << "Returning to the city, everybody acknowledges your deed and a big celebration begins in your honor !" << endl;
 						cout << "THE END" << endl;
@@ -284,19 +366,12 @@ void Game::MainMenu()
 
 						cout << "" << endl;
 					}
-
-					else if (choiceDoors == 2)
+					else
 					{
-						cout << "You have chosen the steel door" << endl;
-						cout << "" << endl;
+						break;
 					}
 
-					else if (choiceDoors == 3)
-					{
-						cout << "You have chosen the caged door" << endl;
-						cout << "" << endl;
-						cout << "" << endl;
-					}
+					
 
 
 				}
@@ -328,89 +403,22 @@ void Game::MainMenu()
 
 		else
 		{
-			cout << "Please enter  1,2 or 3" << endl;
+			cout << "Please enter  1 or 2" << endl;
 
 		}
 		cout << "\n Press any key to continue" << endl;
 		_getch();
 		break;
-	case 2:
-		system("cls");
-		cout << " <=======|==o" << " o==|=======>" << "\n" << endl;
-		cout << " The purpose of this game is to help your character to overcome the challenges" << endl;
-		cout << "he faces in the zones that he travels to, by defeating the enemies he will encounter.\n" << endl;
-		cout << " During the game, the user will have to choose his options very carefully, as it will" << endl;
-		cout << "affect the fate of the hero.\n" << endl;
-		cout << " The instructions are simple : Play and survive the challenges in order to finish the story\n" << endl;
-		cout << " <=======|==o" << " o==|=======>" << endl << endl;
-
-		cout << "Press enter to go back to main menu..";
-		getline(cin, back);
-		cin.ignore();
-		system("cls");
-
-		break;
-	case 3:
-		system("cls");
-		cout << "=== Character Stats === \n" << endl;
-		cout << "Name :" << "To be added\n" << endl;
-		cout << "Health : .... \n" << endl;
-		cout << "Stamina : .... \n" << endl;
-		cout << "Strenght : .... \n" << endl;
-		cout << "Experience : .... \n" << endl;
-
-		cout << "Press enter to go back to main menu..";
-		getline(cin, back);
-		cin.ignore();
-		system("cls");
-
-		break;
-	case 4:
-		system("cls");
-		cout << "The game was created by : \n" << endl;
-		cout << " Kobe Davis " << endl;
-		cout << " Gabriel Dumitru " << endl;
-		cout << " Petar Patev " << endl;
-		cout << " Ajaz Usmaan" << endl;
-		cout << " Asim Osama" << endl;
-		cout << " Bashir Deen" << endl << endl;
-
-
-		cout << "Press enter to go back to main menu..";
-		getline(cin, back);
-		cin.ignore();
-		system("cls");
-
-		break;
-
-	case 5:
-		system("cls");
-		cout << "Are you sure you want to quit de game?" << endl;
-		cout << "If yes, press y, if not, press n." << endl;
-		cout << "Choice: ";
-		cin >> quit;
-		if (quit == "y")
-		{
-			play = false;
-			Sleep(1000);
-			break;
-			system("cls");
-		}
-		else if (quit == "n")
-		{
-			system("cls");
-			cout << "Going back to main menu.";
-			Sleep(1000);
-			system("cls");
-			break;
-		}
-
-
 
 
 	default:
-		cout << "Incorrect Input" << endl;
 		break;
 	}
 
 }
+
+
+// For going back 
+// cout<<"Press enter....";
+//getline(cin,back);
+//cin.ignore();
