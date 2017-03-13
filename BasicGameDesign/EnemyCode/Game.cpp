@@ -38,22 +38,202 @@ void Game::MainMenu()
 	{
 	case 1:
 		system("cls");
-		cout << "The light of the sun glints off a piece of glass next to your head causing"
-			"you too squint. A sudden pain rushes through your body causing you to jolt"
-			"upright. You look around you, where are you. You search your memories to"
-			"find some semblance of reality, but nothing comes to mind. Looking down you"
-			"find a sword at your feet, old and chipped you feel as if it may break at any"
-			"moment but as it is all you have you pick it up. Giving it a few practice"
-			"swings and adjusting to its weight, you head out into the light.Emerging into"
-			"the light, you note the sun rising over the derelict temple you stumbled out"
-			"of. Deciding not to focus on the temple, you look forward and see three"
-			"directions to choose from all leading into the forest…" << endl;
-		int pick;
-		middle(pick);
-		cout << "You stumble through more trees, branches scraping your face as you go. From in front you believe you"
-			"can see another clearing, so you head towards it..." << endl;
-
+		cout << "On your adventure you come across a heavily armed city..." << endl;
+		cout << "You have two options warrior" << endl;
 		system("cls");
+		int choiceOne_Path;
+		cout << "# What would you like to do?" << endl;
+		cout << "\t >> Enter '1' to enter the city through the main gates " << endl;
+		cout << "\t >> Enter '2' to enter the city by climbing its walls" << endl;
+		cout << "\t >> Enter '3' to go to a cave you have found on your way to the city and left it behind" << endl;
+	retry:
+
+	
+		cout << "\nEnter your choice: ";
+		cin >> choiceOne_Path;
+		if (choiceOne_Path == 1)
+		{
+			cout << "\n!!!----------------------Chapter One: The City----------------------!!!" << endl;
+			cout << "\nThe front gates are heavily barricaded and protected by 10 armed guards" << endl;
+			cout << "You are attacked by the guards" << endl;
+			cout << "# You try to fight but you are overpowered and are killed..." << endl;
+			
+
+		}
+		else if (choiceOne_Path == 2)
+		{
+			cout << "\n!!!----------------------Chapter One: The City----------------------!!!" << endl;
+			cout << "\nYou climb the walls of the city and make it over to the other side" << endl;
+			cout << "There are heavily armed guards everywhere but they haven't noticed you." << endl;
+			cout << "An infantry patrol approaches you" << endl;
+			cout << "# You run into a nearby house and hide" << endl;
+			cout << "# a townsman asks who you are" << endl;
+			char name[50];
+			cout << "You reply" << endl << endl; 
+			cin.getline(name, 50);
+			cout << "You better move fast, " << name << "The guards are searching for you" << endl << endl;
+			cout << " You need to fulfill your duty before you return to the city hero, you are not welcome here until then" << endl << endl;
+			cout << "\t >> Enter '1' to enter the city through the main gates " << endl;
+			cout << "\t >> Enter '2' to enter the city by climbing its walls" << endl;
+			cout << "\t >> Enter '3' to go to a cave you have found on your way to the city and left it behind" << endl;
+
+			goto retry; 
+
+		}
+		else if (choiceOne_Path == 3)
+		{
+			system("cls");
+			cout << "Going to the cave....\n";
+			
+			cout << "You continue your journey and stumble upon a suspicous cave where you may find the end of your quest." << endl;
+			cout << "However you must be careful as the risk is far too high" << endl;
+			cout << "You have two options adventurer " << endl;
+
+			int choiceOne_Entrance;
+			cout << "\t >> Enter '1' to enter the cave and search for the Monk " << endl;
+			cout << "\t >> Enter '2' if you would like to return to the city " << endl;
+
+		
+
+			cout << "\nEnter your choice: ";
+			cin >> choiceOne_Entrance;
+			if (choiceOne_Entrance == 1)
+			{
+				cout << "-----Entrance-----" << endl;
+				cout << "you enter the dungeon and begin to explore" << endl;
+
+
+				int choiceTwo_Path;
+
+
+				cout << "As you look around the house there are three paths you can take within this dungeon, left, right or straight." << endl;
+				cout << "Where do you choose to go?" << endl;
+				cout << "\t >> Enter '1' to go left " << endl;
+				cout << "\t >> Enter '2' to go right" << endl;
+				cout << "\t >> Enter '3' to go straight" << endl;
+				cout << "\nEnter your choice: ";
+				cin >> choiceTwo_Path;
+
+				if (choiceTwo_Path == 1)
+				{
+					cout << "You have chosen to take the path to the left" << endl;
+					cout << "As you continue to walk you come to a empty room with a skeleton slumped within the corner" << endl;
+					cout << "A DOOR SLAMS SHUT BEHIND YOU" << endl;
+
+					int choiceRoom;
+
+					cout << "You have two options" << endl;
+					cout << "\t >> Enter '1' to search the room for a way out " << endl;
+					cout << "\t >> Enter '2' to attempt to somehow break the door down" << endl;
+
+					cout << "\nEnter your choice: ";
+					cin >> choiceRoom;
+
+					if (choiceRoom == 1)
+					{
+						cout << "You have chosen to search for a way out" << endl;
+						cout << "" << endl;
+					}
+
+					else if (choiceRoom == 2)
+					{
+						cout << "You have chosen to break the door down" << endl;
+						cout << "" << endl;
+					}
+
+
+
+				}
+
+				else if (choiceTwo_Path == 2)
+				{
+					cout << "You have taken the path to the right" << endl;
+					cout << "as you continue to walk ahead on this cold path you start to feel the ground shake" << endl;
+					cout << "THE FLOOR COLLAPSES BENEATH YOU" << endl;
+					cout << "YOU HAVE DIED" << endl;
+				}
+
+				else if (choiceTwo_Path == 3)
+				{
+					cout << "You continue straight through this dungeon searching for whatever items you can find along the floor within the darkness " << endl;
+					cout << "You come across a torch and decide to light it " << endl;
+					cout << "The halls light up and reveal three doors infront of you" << endl;
+					cout << "Which one will you choose? " << endl;
+
+					int choiceDoors;
+
+					cout << "\t >> Enter '1' to go through the wooden door " << endl;
+					cout << "\t >> Enter '2' to go through the steel door" << endl;
+					cout << "\t >> Enter '3' to go through the caged door" << endl;
+					cout << "\nEnter your choice: ";
+					cin >> choiceDoors;
+
+					if (choiceDoors == 1)
+					{
+						cout << "You have chosen the wooden door" << endl;
+						cout << "You find yourself in a small room, but you feel something is not right..." << endl;
+						cout << "In a corner, you see the Lonely Monk meditating, with a group of monkeys surrounding him, maybe protecting him..." << endl;
+						cout << " Knowing that you have to fulfill your duty, you charge at him, wanting to end his tornment." << endl;
+						Enemy monk; 
+						monk.cinit(3, "Lonely Monk", "Hideout", 30, 3, 200, 250);
+						//fighting
+						cout << "Now that you completed your quest, you return victorious to the city...." << endl;
+						cout << "Returning to the city, everybody acknowledges your deed and a big celebration begins in your honor !" << endl;
+						cout << "THE END" << endl; 
+
+						
+
+						cout << "" << endl;
+					}
+
+					else if (choiceDoors == 2)
+					{
+						cout << "You have chosen the steel door" << endl;
+						cout << "" << endl;
+					}
+
+					else if (choiceDoors == 3)
+					{
+						cout << "You have chosen the caged door" << endl;
+						cout << "" << endl;
+						cout << "" << endl;
+					}
+
+
+				}
+
+
+			}
+
+
+			else if (choiceOne_Entrance == 2)
+			{
+				cout << "You have chosen to return to the city" << endl;
+				cout << "\t >> Enter '1' to enter the city through the main gates " << endl;
+				cout << "\t >> Enter '2' to enter the city by climbing its walls" << endl;
+				cout << "\t >> Enter '3' to go to a cave you have found on your way to the city and left it behind" << endl;
+				goto retry;
+
+
+			}
+			else
+			{
+				cout << "You did not enter the correct number please enter 1 or 2" << endl;
+				
+			}
+			cout << "\nPress any key to continue" << endl;
+			_getch();
+			break;
+		
+		}
+
+		else
+		{
+			cout << "Please enter  1,2 or 3" << endl;
+			
+		}
+		cout << "\n Press any key to continue" << endl;
+		_getch();
 		break;
 	case 2:
 		system("cls");
