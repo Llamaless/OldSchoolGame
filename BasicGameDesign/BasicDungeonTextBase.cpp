@@ -57,16 +57,87 @@ retry:
 			if (choiceRoom == 1)
 			{
 				cout << "You have chosen to search for a way out" << endl;
-				cout << "" << endl;
+				cout << "As you search the room for a way out the skeleton awakes" << endl;			
+				cout << "You have two options adventurer " << endl;
+				
+				int choiceSkeleton;
+
+				
+				cout << "\t >> Enter '1' to attack the skeleton with your sword" << endl;
+				cout << "\t >> Enter '2' to block the skeleton with your shield" << endl;
+
+				cout << "\nEnter your choice: ";
+				cin >> choiceSkeleton;
+
+				if (choiceSkeleton == 1)
+				{
+					cout << "You have chosen to attack ths skeleton with your sword" << endl;
+					cout << "You hit the skeleton with your sword 4 times" << endl;
+					cout << "The skeleton falls to the floor" << endl;
+
+				}
+
+				else if (choiceSkeleton == 2)
+				{
+					cout << "You block the skeleton with your shield but it is not enough" << endl;
+					cout << "The skeleton gets through and attacks you" << endl;
+					cout << "YOU HAVE DIED" << endl;
+				}
+
 			}
 
 			else if (choiceRoom == 2)
 			{
 				cout << "You have chosen to break the door down" << endl;
-				cout << "" << endl;
-			}
+				cout << "The door breaks down and you continue onto the path that leads straight into the darkness" << endl;
 
-		
+				cout << "You continue straight through this dungeon searching for whatever items you can find along the floor within the darkness " << endl;
+				cout << "You come across a torch and decide to light it " << endl;
+				cout << "The halls light up and reveal three doors infront of you" << endl;
+				cout << "Which one will you choose? " << endl;
+
+				int choiceDoors;
+
+				cout << "\t >> Enter '1' to go through the wooden door " << endl;
+				cout << "\t >> Enter '2' to go through the steel door" << endl;
+				cout << "\t >> Enter '3' to go through the caged door" << endl;
+				cout << "\nEnter your choice: ";
+				cin >> choiceDoors;
+
+				if (choiceDoors == 1)
+				{
+					cout << "You have chosen the wooden door" << endl;
+					cout << "The wooden door reveals a room with a small chest and an exit door" << endl;
+					cout << "You open the small chest and it reveals 500gold" << endl;
+					cout << "The exit door reveals the way out" << endl;
+
+
+				}
+
+				else if (choiceDoors == 2)
+				{
+					cout << "You have chosen the steel door" << endl;
+					cout << "The steel door reveals a large chest and an exit door" << endl;
+					cout << "The large chest reveals 2000 gold " << endl;
+					cout << "The exit door reveals the way out" << endl;
+
+				}
+
+				else if (choiceDoors == 3)
+				{
+					cout << "You have chosen the caged door" << endl;
+					cout << "The caged door reveals a large chest and an exit door" << endl;
+					cout << "The large chest reveals 500,000 gold " << endl;
+					cout << "The exit door reveals the way out" << endl;
+					cout << "It's a trap! As soon as you open the door the room collapses on top you crushing you" << endl;
+					cout << "YOU HAVE DIED" << endl;
+
+
+				}
+
+				
+			}
+	
 
 		}
 
@@ -96,20 +167,32 @@ retry:
 			if (choiceDoors == 1)
 			{
 				cout << "You have chosen the wooden door" << endl;
-				cout << "" << endl;
+				cout << "The wooden door reveals a room with a small chest and an exit door" << endl;
+				cout << "You open the small chest and it reveals 500gold" << endl;
+				cout << "The exit door reveals the way out" << endl;
+
+
 			}
 
 			else if (choiceDoors == 2)
 			{
 				cout << "You have chosen the steel door" << endl;
-				cout << "" << endl;
+				cout << "The steel door reveals a large chest and an exit door" << endl;
+				cout << "The large chest reveals 2000 gold " << endl;
+				cout << "The exit door reveals the way out" << endl;
+
 			}
 
 			else if (choiceDoors == 3)
 			{
 				cout << "You have chosen the caged door" << endl;
-				cout << "" << endl;
-				cout << "" << endl;
+				cout << "The caged door reveals a large chest and an exit door" << endl;
+				cout << "The large chest reveals 500,000 gold " << endl;
+				cout << "The exit door reveals the way out" << endl;
+				cout << "It's a trap! As soon as you open the door the room collapses on top you crushing you" << endl;
+				cout << "YOU HAVE DIED" << endl;
+
+
 			}
 
 
