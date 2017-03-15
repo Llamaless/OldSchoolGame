@@ -1,0 +1,288 @@
+//Importing libraries
+#include <iostream>
+#include <cstdlib>
+#include <stdlib.h>
+#include <time.h>
+#include "libsqlite.hpp"// Include the sqlite3 database structure
+
+using namespace std; //used name space to avoid putting ::std where needed
+
+//Initialize Player variables
+int MAX_DAMAGE;
+int MIN_DAMAGE;
+int DEFENCE;
+int CURRENT_HEALTH;
+int MAX_HEALTH;
+int PLAYER_LEVEL;
+int EXP_TO_NEXT;
+int EXP;
+
+//Initialize Monster variables
+int MONSTER_MAX;
+int MONSTER_MIN;
+int MONSTER_DEF;
+int MONSTER_CURRENT_HEALTH;
+int MONSTER_MAX_HEALTH;
+int MONSTER_EXP_GIVE;
+
+//initialize variables where damage is stored
+int DAMAGE_DEALT;
+int DAMAGE_TAKEN;
+
+
+bool Training; //initialize this bool to keep the menu repeating when the player is playing the game
+
+void UPDATE_PLAYER()//used to abdate player attributes in the database
+{
+    try
+		{
+			sqlite::sqlite db("GameDB.sqlite3"); //Opens the Database
+
+			auto curTemp = db.get_statement(); //declaring cur as an sql Statement
+            curTemp->set_sql("UPDATE Player SET HP = '" +  to_string(CURRENT_HEALTH) +
+                             "', HP_MAX = '" + to_string(MAX_HEALTH) +
+                             "', LEVEL = '" + to_string(PLAYER_LEVEL) +
+                             "', EXP = '" + to_string(EXP) +
+                             "', EXPNEXT = '" + to_string(EXP_TO_NEXT) +
+                             "', MINDMG = '" + to_string(MIN_DAMAGE) +
+                             "', MAXDMG = '" + to_string(MAX_DAMAGE) +
+                             "', DEFENCE = '" + to_string(DEFENCE) +
+		    "' WHERE ID = 1");
+        
+				
+			curTemp->exec();//Executes the statement
+
+
+			}
+			catch (sqlite::exception e)      // catch all sql issues
+			{
+				std::cerr << e.what() << std::endl; //print Errors
+			}
+}
+
+void LOAD_ENEMY()//used to load the enemy into the game
+{
+    string sqliteFile = "GameDB.sqlite3"; //Set database name
+	try
+	{
+		sqlite::sqlite db(sqliteFile);//connect to database
+
+		auto cur = db.get_statement();            // create query
+		cur->set_sql("select * from Enemy where LEVEL = ?"); //load the monster that matches the players level
+		cur->prepare();// run query
+        cur->bind( 1, PLAYER_LEVEL);
+
+
+		while (cur->step())// loop over results
+		    {
+            //get the attributes from the table and store the into the corresponding variables
+            MONSTER_MAX = cur->get_int(2);
+            MONSTER_MIN = cur->get_int(1);
+            MONSTER_DEF = cur->get_int(3);
+            MONSTER_CURRENT_HEALTH = cur->get_int(4);
+            MONSTER_MAX_HEALTH = cur->get_int(5);
+            MONSTER_EXP_GIVE = cur->get_int(6);
+		    }
+
+	    }
+	catch (sqlite::exception e)      // catch all sql issues
+	    {
+		    std::cerr << e.what() << std::endl; // Display error
+	    }
+}
+
+void LOAD_PLAYER()//used to load the player attributes when the game is initiated
+{
+    string sqliteFile = "GameDB.sqlite3"; //Set database name
+	try
+	{
+		sqlite::sqlite db(sqliteFile);//connect to database
+
+		auto cur = db.get_statement();            // create query
+		cur->set_sql("select * from Player where ID = 1"); //select the stats where the id is equal to 1 
+		cur->prepare();                            // run query
+        
+
+
+		while (cur->step())// loop over results
+		    {
+            //get the attributes from the table and store the into the corresponding variables
+              MAX_DAMAGE = cur->get_int(7);
+              MIN_DAMAGE= cur->get_int(6);
+              DEFENCE = cur->get_int(8);
+              CURRENT_HEALTH = cur->get_int(1);
+              MAX_HEALTH = cur->get_int(2) ;
+              PLAYER_LEVEL= cur->get_int(3);
+              EXP_TO_NEXT= cur->get_int(5);
+              EXP = cur->get_int(4);
+		    }
+
+	    }
+	catch (sqlite::exception e)      // catch all sql issues
+	    {
+		    std::cerr << e.what() << std::endl; // Display error
+	    }
+}
+void PLAYER_LEVEL_CHECK()//used to check if the player is ready to level up
+{
+    if (EXP >= EXP_TO_NEXT && PLAYER_LEVEL<6)
+    {
+        PLAYER_LEVEL++;
+        string sqliteFile = "GameDB.sqlite3"; //Set database name
+	try
+	{
+		sqlite::sqlite db(sqliteFile);//connect to database
+
+		auto cur = db.get_statement();            // create query
+		cur->set_sql("select * from LevelScale where LEVEL = ?"); //select the next level attributes
+		cur->prepare();                            // run query
+        cur->bind( 1, PLAYER_LEVEL);
+
+
+		while (cur->step())// loop over results
+		    {
+            //update the variables with the next level attributes
+              MAX_DAMAGE = cur->get_int(5);
+              MIN_DAMAGE= cur->get_int(4);
+              DEFENCE = cur->get_int(2);
+              CURRENT_HEALTH = cur->get_int(1);
+              MAX_HEALTH = cur->get_int(1) ;
+              EXP_TO_NEXT= cur->get_int(3);
+              EXP = 0;
+		    }
+
+	    }
+	catch (sqlite::exception e)      // catch all sql issues
+	    {
+		    std::cerr << e.what() << std::endl; // Display error
+	    }
+        
+        UPDATE_PLAYER(); //call to this function to update the database values
+        cout << "Congratz you just leveled up to level " << PLAYER_LEVEL << endl;//message to let the player know he/she has leveled up
+        
+    }
+}
+void MONSTER_ATTACK()//the monster damage controll
+{
+    srand(time(NULL)); //generate =different number each time
+            if ((rand() % 100) < 30) //used to make the monster attack with a success rate of 30%
+            {
+                 srand(time(NULL)); //Get different random number each time
+                     //Generate random damage between min and max damage and the players defence
+                DAMAGE_TAKEN = ((rand() % ((MONSTER_MAX + 1) - MONSTER_MIN )) + MONSTER_MIN) - DEFENCE ;
+                    if (DAMAGE_TAKEN < 0) // if the damage is a negative number then set the damage to 1
+                    {
+                        DAMAGE_TAKEN = 1;
+                    }
+                CURRENT_HEALTH -= DAMAGE_TAKEN; //decrease players hp by the damage taken
+                UPDATE_PLAYER();//call to this function to update the database values
+
+            if (CURRENT_HEALTH <= 0) //if the player has 0 hp declare the monster as the winner
+            
+            {
+
+                if (EXP-MONSTER_EXP_GIVE > 0)
+                {
+                    EXP -= MONSTER_EXP_GIVE/2;//penilize the player by loosing half of the exp the monster gives
+                    
+                    cout << "You lost exp because your health reached 0" << endl;
+                    CURRENT_HEALTH = MAX_HEALTH; //refill players health
+                    UPDATE_PLAYER();//call to this function to update the database values
+                }
+                else
+                {
+                    EXP = 0;//set exp to 0 to avoid negative integers
+                    cout << "You lost exp because your health reached 0" << endl;
+                    CURRENT_HEALTH = MAX_HEALTH;//refill players health
+                    UPDATE_PLAYER();//call to this function to update the database values
+                }
+            
+
+
+            }
+          }
+   
+}
+
+int main()
+{
+    LOAD_PLAYER();//load player's stats on launch
+    LOAD_ENEMY();//load enemy's stats on launch
+    int OPTION; //store the answer given by the player in this variable 
+    Training = true; //set this boolean to true to repeat the combat
+    while (Training) //run this while the player is in battle
+    {
+        //MENU with choices and to show monster hp and player hp
+        cout << "--- BATTLE ----" << endl << endl;
+        cout << "MONSTER HEALTH " << MONSTER_CURRENT_HEALTH << "/" << MONSTER_MAX_HEALTH << endl;
+        cout << "PLAYER HEALTH " << CURRENT_HEALTH << "/" << MAX_HEALTH << endl << endl;
+        cout << "0 : ATTACK" << endl;
+        cout << "1 : SPELL" << endl << endl;
+
+        cout << "YOUR OPTION IS :" ;
+
+        cin >> OPTION;//get players choice
+        cout << endl;
+
+        switch (OPTION)  //do the appropriate based on the option chosen
+        {
+        case 0: // if player chose attack
+            
+            srand(time(NULL)); //generate =different number each time
+            //generate random damage based on the attack max min and the defence of the monster
+            DAMAGE_DEALT = ((rand() % ((MAX_DAMAGE + 1) - MIN_DAMAGE )) + MIN_DAMAGE) - MONSTER_DEF ;
+            if (DAMAGE_DEALT < 0) //if the damage is negative then set it to 1
+            {
+
+               DAMAGE_DEALT = 1;
+            }
+            MONSTER_CURRENT_HEALTH -= DAMAGE_DEALT;//decrease monsters hp by the damage generated
+
+            if (MONSTER_CURRENT_HEALTH <= 0 || MONSTER_CURRENT_HEALTH-DAMAGE_DEALT < 0) // if monster hp is 0 then declare payer as the winner
+            {
+                EXP += MONSTER_EXP_GIVE;//increase players exp with the exp awarded by the monster
+                PLAYER_LEVEL_CHECK();//call to this function to check if the player is ready to level up
+                LOAD_ENEMY();//call to this function to load the enemy
+                
+            }
+            else
+            {
+                MONSTER_ATTACK(); //Make monster attack
+            }
+
+
+            break;
+
+        case 1:
+            DAMAGE_DEALT = MAX_DAMAGE + (MAX_DAMAGE * 30 / 100) - MONSTER_DEF; //Get players max damage and add 30% to it
+            if (DAMAGE_DEALT < 0) //if the damage is negative then set it to 1
+            {
+
+               DAMAGE_DEALT = 1;
+            }
+            MONSTER_CURRENT_HEALTH -= DAMAGE_DEALT;//decrease monsters hp by the damage generated
+
+            if (MONSTER_CURRENT_HEALTH <= 0 || MONSTER_CURRENT_HEALTH-DAMAGE_DEALT < 0) // if monster hp is 0 then award player
+            {
+
+                EXP += MONSTER_EXP_GIVE;//increase players exp with the exp awarded by the monster
+                PLAYER_LEVEL_CHECK();//call to this function to check if the player is ready to level up
+                LOAD_ENEMY();//call to this function to load the enemy
+            }
+            else//if not killed then monster should attack
+            {
+                MONSTER_ATTACK(); //Make monster attack
+            }
+
+
+            break;
+
+        }
+
+
+
+
+
+    }
+    return 0;
+}
