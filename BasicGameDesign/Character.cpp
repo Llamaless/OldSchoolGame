@@ -1,10 +1,9 @@
-
 #include "Character.h"
 #include "Functions.h"
 #include <iostream>
+#include <sqlite3.h>
 
 using namespace std;
-
 
 Character::Character()//Call constructor
 {
@@ -44,6 +43,28 @@ string Character::PrintPlayerStats() const
     std::cout<<"-Defence: "<< this->defence<<std::endl;
     std::cout<<std::endl;
             
+}
+
+int Character::db_build()
+{
+    sqlite3 *db;
+    int rc;
+    const char* sql:
+    rc = sqlite_open("character.db", &db);
+
+    /*Create SQL Table*/
+    sql= "CREATE TABLE Character("
+        "ID INT PRIMARY         KEY     NOT NULL,"
+        "NAME            TEXT     NOT NULL,"
+        "EXP             INT        NOT NULL,"
+        "HEALTH          INT   NOT NULL,"
+        "DAMAGE          INT   NOT NULL,"
+        "DEFENCE         INT  NOT NULL,";
+
+    /*Execute SQL Table*/
+    rc = sqlite3_exec(db, sql, NULL, NULL, NULL)
+    sqlite3_close(db);
+    return 0;
 }
         
 
