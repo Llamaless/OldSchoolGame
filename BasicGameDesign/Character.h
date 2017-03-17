@@ -1,23 +1,28 @@
-//
+
+//header file for character.cpp
 
 #pragma once
+#include<string>
+#include <iomanip>
 #include <iostream>
-#include <string>
-#include <cstdlib>
+
+using namespace std;
+#ifndef CHARACTER_H
+#define CHARACTER_H
 
 
 class Character
 {
-public:
+public://publically accessible attributes
     Character();
     virtual ~Character();
 
     //Functions
     void initialize( string name);
-    string PrintPlayerStats() const;
+    void PrintPlayerStats() const;
 
     //Accessors
-    inline const string& getName() const {return this ->name;}
+    inline const std::string& getName() const {return this ->name;}
     inline const int& getExp() const {return this ->exp;}
     inline const int& getHp() const {return this ->hp;}
     inline const int& getHpadv() const {return this ->hpadv;}
@@ -27,8 +32,8 @@ public:
 
     //Modifiers
 
-private:
-    string name;
+private://private access
+    srd::string name;
     int exp;
     int hp;
     int hpadv;
