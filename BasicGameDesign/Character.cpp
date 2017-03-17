@@ -1,7 +1,12 @@
+
 #include "Character.h"
+#include "Functions.h"
+#include <iostream>
+
+using namespace std;
 
 
-Character::Character()
+Character::Character()//Call constructor
 {
     this->name = "";
     this->exp = 0;
@@ -12,13 +17,13 @@ Character::Character()
     this->defence = 0;
 }
 
-Character::~Character()
+Character::~Character()//Call destructor
 {
 
 }
 
-//Fuction
-void Character::initialize(int level, string name)
+//Function to initialize the character
+void Character::initialize(int level, std::string name)
 {
     this->name = name;
     this->exp = 0;
@@ -31,11 +36,14 @@ void Character::initialize(int level, string name)
 
 string Character::PrintPlayerStats() const
 {
-    cout<<"-Character stats-"<<endl;
-    cout<<"-Name: "<< this->name<<endl;
-    cout<<"-Exp: "<< this->exp<<endl;
-    cout<<"-:Health "<< this->hp<<"/"<<this->hpadv<<endl;
-    cout<<"-Damage: "<< this->damage<<"/"<<this->damageadv<<endl
-    cout<<"-Defence: "<< this->defence<<endl
+    std::cout<<"-Character stats-"<<std::endl;
+    std::cout<<"-Name: "<< this->name<<std::endl;
+    std::cout<<"-Exp: "<< this->exp<<std::endl;
+    std::cout<<"-:Health "<< this->hp<<"/"<<this->hpadv<<std::endl;
+    std::cout<<"-Damage: "<< this->damage<<"/"<<this->damageadv<<std::endl;
+    std::cout<<"-Defence: "<< this->defence<<std::endl;
+    std::cout<<std::endl;
             
 }
+        
+
