@@ -33,6 +33,7 @@ void Character::initialize(int level, std::string name)
     this->defence = 1; 
 }
 
+//Function to print Character stats
 string Character::PrintPlayerStats() const
 {
     std::cout<<"-Character stats-"<<std::endl;
@@ -66,5 +67,5 @@ int Character::db_build()
     sqlite3_close(db);
     return 0;
 }
-        
+
 
